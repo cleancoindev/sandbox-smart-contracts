@@ -166,17 +166,12 @@ describe('GameToken', function () {
         'GameTokenUpdated'
       );
       gameId = updateEvent.args[1];
-      const baseId = updateEvent.args[0];
       const gameIdFromTransfer = transferEvent.args[2];
-      const gameOwner = transferEvent.args[1];
-      // @note this won't work till erc721BaseToken is updated
-      // const idAsHex = utils.hexValue(gameId);
-      // console.log(`id as hex: ${idAsHex}`);
-      // console.log(`baseid as hex: ${utils.hexValue(baseId)}`);
-      const ownerwithBaseId = await gameToken.ownerOf(baseId);
+      const ownerFromEvent = transferEvent.args[1];
+      const ownerFromStorage = await gameToken.ownerOf(gameId);
       expect(gameId).to.be.equal(gameIdFromTransfer);
-      expect(ownerwithBaseId).to.be.equal(users[4].address);
-      expect(gameOwner).to.be.equal(users[4].address);
+      expect(ownerFromStorage).to.be.equal(users[4].address);
+      expect(ownerFromEvent).to.be.equal(ownerFromStorage);
     });
 
     it('should revert if trying to reuse a baseId', async function () {
