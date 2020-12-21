@@ -313,10 +313,12 @@ describe('GameToken', function () {
           gameTokenAsMinter.createGame(
             GameOwner.address,
             GameOwner.address,
-            [assetId, assetId2],
-            [quantity, quantity2],
+            {
+              ...creation,
+              assetIdsToAdd: [assetId, assetId2],
+              assetAmountsToAdd: [quantity, quantity2],
+            },
             ethers.constants.AddressZero,
-            '',
             randomId
           )
         );
@@ -378,10 +380,12 @@ describe('GameToken', function () {
             gameTokenAsMinter.createGame(
               GameOwner.address,
               GameOwner.address,
-              [assetId],
-              [11, 42],
+              {
+                ...creation,
+                assetIdsToAdd: [assetId],
+                assetAmountsToAdd: [11, 42],
+              },
               ethers.constants.AddressZero,
-              '',
               randomId
             )
           )
