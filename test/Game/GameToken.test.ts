@@ -1365,12 +1365,6 @@ describe('GameToken', function () {
       expect(type).to.be.equal(METATX_SANDBOX);
     });
 
-    // @note finish these tests .
-    it.skip('can call setGameEditor if type == METATX_SANDBOX', async function () {});
-    it.skip('can call transferCreatorship if type == METATX_SANDBOX', async function () {});
-    it.skip('can call _destroyGame if type == METATX_SANDBOX', async function () {});
-    it.skip('can call _recoverAssets if type == METATX_SANDBOX', async function () {});
-
     describe('GameToken: Invalid metaTransactions', function () {
       let gameAsUser7: Contract;
       let others: Address[];
